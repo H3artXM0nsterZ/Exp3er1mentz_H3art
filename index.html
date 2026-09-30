@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Exp3er1mentz H3art</title>
+
+<style>
+/* =====================================================
+   EXP3ER1MENTZ H3ART
+   Pixel-art made entirely with CSS
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #08080d;
+    color: #e8e8e8;
+    font-family: "Courier New", monospace;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* GAME */
+
+#game {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(circle at center, #171521 0%, #08080d 70%);
+}
+
+.screen {
+    width: min(1000px, 94vw);
+    min-height: 650px;
+    border: 3px solid #343443;
+    background: #101018;
+    box-shadow:
+        0 0 0 6px #09090d,
+        0 0 40px rgba(0,0,0,.8);
+    position: relative;
+    overflow: hidden;
+}
+
+/* =====================================================
+   TITLE SCREEN
+   ===================================================== */
+
+#titleScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.glitch {
+    font-size: clamp(30px, 6vw, 65px);
+    color: #f0f0f0;
+    letter-spacing: 4px;
+    text-shadow:
+        3px 0 #713d66,
+        -3px 0 #334c70;
+    animation: glitch 3s infinite;
+}
+
+.subtitle {
+    color: #777787;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.startButton {
+    margin-top: 60px;
+    padding: 16px 35px;
+    background: #171722;
+    border: 2px solid #777;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.startButton:hover {
+    background: #292936;
+    border-color: #b9b9b9;
+}
+
+.warning {
+    margin-top: 35px;
+    color: #555564;
+    font-size: 11px;
+    max-width: 500px;
+}
+
+@keyframes glitch {
+    0%, 90%, 100% {
+        transform: translate(0);
+    }
+
+    92% {
+        transform: translate(-2px, 1px);
+    }
+
+    94% {
+        transform: translate(2px, -1px);
+    }
+}
+
+/* =====================================================
+   HEART — pixel-art heart built with box-shadow
+   ===================================================== */
+
+#heartScreen {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.heart {
+    width: 20px;
+    height: 20px;
+    margin: 40px auto;
+    transform: scale(2);
+    animation: beat 1.2s ease-in-out infinite;
+}
+
+.heart::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: #ff2d55;
+    box-shadow:
+        20px 0 0 #ff2d55,
+        40px 0 0 #ff2d55,
+        60px 0 0 #ff2d55,
+        0 20px 0 #ff2d55,
+        10px 20px 0 #ff2d55,
+        20px 20px 0 #ff2d55,
+        30px 20px 0 #ff2d55,
+        40px 20px 0 #ff2d55,
+        50px 20px 0 #ff2d55,
+        60px 20px 0 #ff2d55,
+        70px 20px 0 #ff2d55,
+        10px 40px 0 #ff2d55,
+        20px 40px 0 #ff2d55,
+        30px 40px 0 #ff2d55,
+        40px 40px 0 #ff2d55,
+        50px 40px 0 #ff2d55,
+        60px 40px 0 #ff2d55,
+        20px 60px 0 #ff2d55,
+        30px 60px 0 #ff2d55,
+        40px 60px 0 #ff2d55,
+        50px 60px 0 #ff2d55,
+        30px 80px 0 #ff2d55,
+        40px 80px 0 #ff2d55;
+}
+
+@keyframes beat {
+    0%, 100% { transform: scale(2); }
+    50% { transform: scale(2.15); }
+}
+
+.backButton {
+    margin-top: 30px;
+    padding: 12px 28px;
+    background: #171722;
+    border: 2px solid #777;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.backButton:hover {
+    background: #292936;
+    border-color: #b9b9b9;
+}
+
+</style>
+</head>
+<body>
+
+<div id="game">
+    <div class="screen" id="titleScreen">
+        <div class="glitch">EXP3ER1MENTZ H3ART</div>
+        <div class="subtitle">pixel-art made entirely with CSS</div>
+        <button class="startButton" onclick="showHeart()">START</button>
+        <div class="warning">A small CSS experiment. Click START to see the heart.</div>
+    </div>
+
+    <div class="screen" id="heartScreen">
+        <div class="heart"></div>
+        <button class="backButton" onclick="showTitle()">BACK</button>
+    </div>
+</div>
+
+<script>
+function showHeart() {
+    document.getElementById('titleScreen').style.display = 'none';
+    document.getElementById('heartScreen').style.display = 'flex';
+}
+
+function showTitle() {
+    document.getElementById('heartScreen').style.display = 'none';
+    document.getElementById('titleScreen').style.display = 'flex';
+}
+</script>
+
+</body>
+</html>
