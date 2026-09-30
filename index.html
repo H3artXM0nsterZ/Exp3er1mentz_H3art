@@ -171,7 +171,7 @@ button {
 }
 
 /* =====================================================
-   CSS PIXEL PEOPLE
+   CSS PIXEL PEOPLE — chibi retro style
    ===================================================== */
 
 .character {
@@ -179,6 +179,12 @@ button {
     width: 100px;
     height: 180px;
     bottom: 65px;
+    animation: bob 2.5s ease-in-out infinite;
+}
+
+@keyframes bob {
+    0%, 100% { bottom: 65px; }
+    50% { bottom: 70px; }
 }
 
 /* Scientist */
@@ -191,139 +197,149 @@ button {
 
 .subject {
     right: 18%;
-    opacity: .75;
+    opacity: .85;
+    animation-delay: .6s;
 }
 
-/* Pixel body */
+/* Head — big chibi head */
 
 .head {
     position: absolute;
-    width: 58px;
-    height: 58px;
-    left: 21px;
+    width: 76px;
+    height: 66px;
+    left: 12px;
     top: 0;
-    background: #d0a087;
-
-    box-shadow:
-        8px 0 #d0a087,
-        16px 0 #d0a087,
-        0 8px #d0a087,
-        8px 8px #d0a087,
-        16px 8px #d0a087,
-        24px 8px #d0a087,
-        0 16px #d0a087,
-        8px 16px #d0a087,
-        16px 16px #d0a087,
-        24px 16px #d0a087,
-        8px 24px #d0a087,
-        16px 24px #d0a087,
-        24px 24px #d0a087,
-        8px 32px #d0a087,
-        16px 32px #d0a087,
-        24px 32px #d0a087,
-        8px 40px #d0a087,
-        16px 40px #d0a087,
-        24px 40px #d0a087;
+    background: #f5cda8;
+    border: 2px solid #2a2a3a;
+    border-radius: 36px 36px 28px 28px;
+    z-index: 3;
 }
 
-/* Hair */
+/* Scientist hair — messy fringe */
 
-.scientist .head {
-    background: #3b3131;
-
-    box-shadow:
-        8px 0 #3b3131,
-        16px 0 #3b3131,
-        24px 0 #3b3131,
-        32px 0 #3b3131,
-        40px 0 #3b3131,
-        0 8px #3b3131,
-        8px 8px #3b3131,
-        16px 8px #3b3131,
-        24px 8px #3b3131,
-        32px 8px #3b3131;
+.scientist .head::before {
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 26px;
+    left: -2px;
+    top: -8px;
+    background: #6b5b50;
+    border: 2px solid #2a2a3a;
+    border-radius: 40px 40px 4px 4px;
 }
 
-/* Eyes */
+/* Subject hair — soft bangs */
+
+.subject .head::before {
+    content: "";
+    position: absolute;
+    width: 76px;
+    height: 14px;
+    left: -2px;
+    top: -4px;
+    background: #5a7a9a;
+    border: 2px solid #2a2a3a;
+    border-radius: 38px 38px 0 0;
+}
+
+/* Big cute eyes with sparkles */
 
 .head::after {
     content: "";
     position: absolute;
-    left: 14px;
-    top: 27px;
-    width: 7px;
-    height: 7px;
-    background: #111;
-
+    left: 18px;
+    top: 30px;
+    width: 12px;
+    height: 14px;
+    background: #2a2a3a;
+    border-radius: 50%;
     box-shadow:
-        22px 0 #111;
+        28px 0 #2a2a3a,
+        3px 3px 0 1px #fff,
+        31px 3px 0 1px #fff;
 }
 
-/* Body */
+/* Blush cheeks */
+
+.blush {
+    position: absolute;
+    width: 10px;
+    height: 6px;
+    background: rgba(255, 140, 140, .45);
+    border-radius: 50%;
+    top: 46px;
+    left: 13px;
+    z-index: 4;
+    box-shadow: 44px 0 rgba(255, 140, 140, .45);
+}
+
+/* Body — small chibi body */
 
 .body {
     position: absolute;
-    top: 66px;
-    left: 13px;
-    width: 74px;
-    height: 85px;
-    background: #e7e7e7;
-
-    box-shadow:
-        8px 0 #e7e7e7,
-        16px 0 #e7e7e7,
-        24px 0 #e7e7e7,
-        32px 0 #e7e7e7,
-        40px 0 #e7e7e7,
-        48px 0 #e7e7e7;
+    top: 64px;
+    left: 22px;
+    width: 56px;
+    height: 44px;
+    background: #e8e8e8;
+    border: 2px solid #2a2a3a;
+    border-radius: 10px 10px 6px 6px;
+    z-index: 2;
 }
 
 /* Scientist lab coat */
 
 .scientist .body {
-    background: #d8d8d8;
+    background: #dadde2;
 }
 
 /* Subject clothing */
 
 .subject .body {
-    background: #262633;
+    background: #3a3a4e;
 }
 
-/* Arms */
+/* Arms — short stubby */
 
 .arm {
     position: absolute;
-    top: 73px;
-    width: 22px;
-    height: 70px;
-    background: #d0a087;
+    top: 70px;
+    width: 14px;
+    height: 32px;
+    background: #f5cda8;
+    border: 2px solid #2a2a3a;
+    border-radius: 7px;
+    z-index: 1;
 }
 
 .arm.left {
-    left: -5px;
+    left: 8px;
 }
 
 .arm.right {
-    right: -5px;
+    right: 8px;
 }
 
-/* Legs */
+/* Legs — short stubby */
 
 .leg {
     position: absolute;
-    top: 145px;
-    width: 27px;
-    height: 45px;
-    background: #24242d;
+    top: 106px;
+    width: 18px;
+    height: 30px;
+    background: #2a2a3a;
+    border: 2px solid #1a1a2a;
+    border-radius: 6px 6px 4px 4px;
+    z-index: 1;
 }
 
 .leg.left {
-    left: 19px;
+    left: 26px;
 }
 
 .leg.right {
-    right: 19px;
+    right: 26px;
 }
 
 /* =====================================================
@@ -495,6 +511,7 @@ button {
                 <div class="character scientist">
 
                     <div class="head"></div>
+                    <div class="blush"></div>
 
                     <div class="body"></div>
 
@@ -512,6 +529,7 @@ button {
                 <div class="character subject">
 
                     <div class="head"></div>
+                    <div class="blush"></div>
 
                     <div class="body"></div>
 
