@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Exp3er1mentz H3art</title>
+
+<style>
+/* =====================================================
+   EXP3ER1MENTZ H3ART
+   Pixel-art made entirely with CSS
+   ===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #08080d;
+    color: #e8e8e8;
+    font-family: "Courier New", monospace;
+    overflow-x: hidden;
+}
+
+button {
+    font-family: inherit;
+}
+
+/* GAME */
+
+#game {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background:
+        radial-gradient(circle at center, #171521 0%, #08080d 70%);
+}
+
+.screen {
+    width: min(1000px, 94vw);
+    min-height: 650px;
+    border: 3px solid #343443;
+    background: #101018;
+    box-shadow:
+        0 0 0 6px #09090d,
+        0 0 40px rgba(0,0,0,.8);
+    position: relative;
+    overflow: hidden;
+}
+
+/* =====================================================
+   TITLE SCREEN
+   ===================================================== */
+
+#titleScreen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.glitch {
+    font-size: clamp(30px, 6vw, 65px);
+    color: #f0f0f0;
+    letter-spacing: 4px;
+    text-shadow:
+        3px 0 #713d66,
+        -3px 0 #334c70;
+    animation: glitch 3s infinite;
+}
+
+.subtitle {
+    color: #777787;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.startButton {
+    margin-top: 60px;
+    padding: 16px 35px;
+    background: #171722;
+    border: 2px solid #777;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.startButton:hover {
+    background: #292936;
+    border-color: #b9b9b9;
+}
+
+.warning {
+    margin-top: 35px;
+    color: #555564;
+    font-size: 11px;
+    max-width: 500px;
+}
+
+@keyframes glitch {
+    0%, 90%, 100% {
+        transform: translate(0);
+    }
+
+    92% {
+        transform: translate(-2px, 1px);
+    }
+
+    94% {
+        transform: translate(2px, -1px);
+    }
+}
+
+/* 
