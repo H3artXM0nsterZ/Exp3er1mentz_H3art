@@ -19,13 +19,28 @@
         <div class="heart-particle">♥</div>
         <div class="heart-particle">♥</div>
         <div class="heart-particle">♥</div>
+        <div class="heart-particle">♥</div>
+        <div class="heart-particle">♥</div>
 
         <!-- TITLE -->
         <section id="titleScreen">
-            <div class="glitch">Exp3er1mentz H3art</div>
-            <div class="subtitle">CLASSIFIED EXPERIMENT // FILE 001</div>
-            <button class="startButton" onclick="startGame()">BEGIN EXPERIMENT</button>
-            <div class="warning">PROPERTY OF THE AGENCY. UNAUTHORIZED ACCESS IS PROHIBITED.</div>
+
+            <div class="title-header">
+                <span class="header-label">LAB-07 // CLASSIFIED</span>
+                <button class="save-btn" onclick="alert('No save data found.')">SAVE</button>
+            </div>
+
+            <div class="title-center">
+                <div class="glitch">Exp3er1mentz</div>
+                <div class="glitch">H3art</div>
+                <div class="subtitle">CLASSIFIED EXPERIMENT // FILE 001</div>
+
+                <button class="startButton" onclick="startGame()">BEGIN EXPERIMENT</button>
+                <button class="saveLoadBtn" onclick="alert('No save data found.')">SAVE / LOAD PROGRESS</button>
+
+                <div class="warning">PROPERTY OF THE AGENCY. UNAUTHORIZED ACCESS IS PROHIBITED.</div>
+            </div>
+
         </section>
 
         <!-- GAME -->
@@ -33,6 +48,7 @@
 
             <div class="topBar">
                 <span class="location">█ <span id="locationName">AGENCY OFFICE</span></span>
+                <span class="subject-label">SUBJECT: 001</span>
                 <span>EXPERIMENT STATUS: <b id="status">STABLE</b></span>
             </div>
 
@@ -46,7 +62,7 @@
                 <div class="speaker" id="speaker">SYSTEM</div>
                 <div class="dialogueText" id="dialogue">Initializing experiment...</div>
                 <div class="choices" id="choices"></div>
-                <div class="continue" id="continue">CLICK TO CONTINUE</div>
+                <div class="continue" id="continue">▼ CLICK</div>
             </div>
 
         </section>

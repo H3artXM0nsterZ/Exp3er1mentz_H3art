@@ -148,7 +148,7 @@ function showScene(sceneName) {
             });
         } else if (scene.next) {
             continueText.style.display = "block";
-            continueText.textContent = "CLICK TO CONTINUE";
+            continueText.textContent = "▼ CLICK";
             continueText.onclick = () => showScene(scene.next);
             continueText.style.cursor = "pointer";
         }
@@ -239,7 +239,7 @@ function showComputerFiles(scene) {
             if (viewedCount === scene.files.length) {
                 const continueText = document.getElementById("continue");
                 continueText.style.display = "block";
-                continueText.textContent = "CLICK TO CONTINUE";
+                continueText.textContent = "▼ CLICK";
                 continueText.onclick = () => {
                     fxLayer.innerHTML = "";
                     showScene(scene.next);
@@ -289,7 +289,7 @@ function showEmail(scene) {
 
     const continueText = document.getElementById("continue");
     continueText.style.display = "block";
-    continueText.textContent = "CLICK TO CONTINUE";
+    continueText.textContent = "▼ CLICK";
     continueText.onclick = () => {
         fxLayer.innerHTML = "";
         showScene(scene.next);
