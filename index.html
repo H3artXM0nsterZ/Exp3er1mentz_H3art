@@ -9,7 +9,7 @@
 <style>
 /* =====================================================
    EXP3ER1MENTZ H3ART
-   Pixel-art made entirely with CSS
+   Yandere Pink × Genshin Edition
    ===================================================== */
 
 * {
@@ -18,8 +18,8 @@
 
 body {
     margin: 0;
-    background: #08080d;
-    color: #e8e8e8;
+    background: #1a0814;
+    color: #f5d0dc;
     font-family: "Courier New", monospace;
     overflow-x: hidden;
 }
@@ -36,17 +36,43 @@ button {
     justify-content: center;
     align-items: center;
     background:
-        radial-gradient(circle at center, #171521 0%, #08080d 70%);
+        radial-gradient(ellipse at center, #3d1a35 0%, #1a0814 70%);
+}
+
+/* Floating hearts */
+
+.heart-particle {
+    position: absolute;
+    color: rgba(255, 107, 157, .35);
+    pointer-events: none;
+    z-index: 0;
+    animation: floatUp 8s linear infinite;
+}
+
+.heart-particle:nth-child(1) { left:  8%; animation-delay: 0s;   font-size: 16px; }
+.heart-particle:nth-child(2) { left: 22%; animation-delay: 2.5s; font-size: 22px; }
+.heart-particle:nth-child(3) { left: 40%; animation-delay: 5s;   font-size: 14px; }
+.heart-particle:nth-child(4) { left: 58%; animation-delay: 1.5s; font-size: 20px; }
+.heart-particle:nth-child(5) { left: 75%; animation-delay: 3.5s; font-size: 18px; }
+.heart-particle:nth-child(6) { left: 90%; animation-delay: 6s;   font-size: 24px; }
+
+@keyframes floatUp {
+    0%   { bottom: -30px;  opacity: 0; }
+    10%  {                opacity: 1; }
+    90%  {                opacity: 1; }
+    100% { bottom: 105%;  opacity: 0; }
 }
 
 .screen {
     width: min(1000px, 94vw);
     min-height: 650px;
-    border: 3px solid #343443;
-    background: #101018;
+    border: 2px solid #d4a574;
+    background: #1e0a1c;
     box-shadow:
-        0 0 0 6px #09090d,
-        0 0 40px rgba(0,0,0,.8);
+        0 0 0 4px #1a0814,
+        0 0 0 6px #b8860b,
+        0 0 30px rgba(255, 107, 157, .3),
+        0 0 60px rgba(255, 107, 157, .15);
     position: relative;
     overflow: hidden;
 }
@@ -66,38 +92,44 @@ button {
 
 .glitch {
     font-size: clamp(30px, 6vw, 65px);
-    color: #f0f0f0;
+    color: #fff0f5;
     letter-spacing: 4px;
     text-shadow:
-        3px 0 #713d66,
-        -3px 0 #334c70;
+        3px 0 #ff1493,
+        -3px 0 #b03060;
     animation: glitch 3s infinite;
 }
 
 .subtitle {
-    color: #777787;
+    color: #d4a0b0;
     margin-top: 5px;
     font-size: 14px;
+    letter-spacing: 2px;
 }
 
 .startButton {
     margin-top: 60px;
     padding: 16px 35px;
-    background: #171722;
-    border: 2px solid #777;
-    color: white;
+    background: linear-gradient(135deg, #ff6b9d, #c44569);
+    border: 2px solid #d4a574;
+    color: #fff;
     cursor: pointer;
     font-size: 18px;
+    border-radius: 6px;
+    box-shadow: 0 0 20px rgba(255, 107, 157, .4);
+    transition: all .3s;
 }
 
 .startButton:hover {
-    background: #292936;
-    border-color: #b9b9b9;
+    background: linear-gradient(135deg, #ff8fb1, #e0568a);
+    border-color: #ffd700;
+    box-shadow: 0 0 30px rgba(255, 107, 157, .6);
+    transform: scale(1.05);
 }
 
 .warning {
     margin-top: 35px;
-    color: #555564;
+    color: #a06070;
     font-size: 11px;
     max-width: 500px;
 }
@@ -127,17 +159,18 @@ button {
 
 .topBar {
     height: 48px;
-    border-bottom: 2px solid #292934;
+    border-bottom: 2px solid #d4a574;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 18px;
-    color: #777787;
+    color: #d4a0b0;
     font-size: 12px;
+    background: rgba(196, 69, 105, .12);
 }
 
 .location {
-    color: #aaaabb;
+    color: #ff6b9d;
 }
 
 .mainArea {
@@ -146,7 +179,7 @@ button {
     min-height: 470px;
     background:
         linear-gradient(
-            rgba(255,255,255,.015) 50%,
+            rgba(255, 107, 157, .02) 50%,
             transparent 50%
         );
     background-size: 100% 4px;
@@ -162,16 +195,16 @@ button {
     background:
         repeating-linear-gradient(
             90deg,
-            #17171f 0px,
-            #17171f 48px,
-            #121219 49px,
-            #121219 50px
+            #2a1020 0px,
+            #2a1020 48px,
+            #1e0a18 49px,
+            #1e0a18 50px
         );
-    border-top: 2px solid #282833;
+    border-top: 2px solid #d4a574;
 }
 
 /* =====================================================
-   CSS PIXEL PEOPLE — chibi retro style
+   CSS PIXEL PEOPLE — chibi yandere style
    ===================================================== */
 
 .character {
@@ -209,13 +242,13 @@ button {
     height: 66px;
     left: 12px;
     top: 0;
-    background: #f5cda8;
-    border: 2px solid #2a2a3a;
+    background: #fce0ce;
+    border: 2px solid #8b3a5a;
     border-radius: 36px 36px 28px 28px;
     z-index: 3;
 }
 
-/* Scientist hair — messy fringe */
+/* Scientist hair — pink yandere */
 
 .scientist .head::before {
     content: "";
@@ -224,12 +257,12 @@ button {
     height: 26px;
     left: -2px;
     top: -8px;
-    background: #6b5b50;
-    border: 2px solid #2a2a3a;
+    background: #ff6b9d;
+    border: 2px solid #8b3a5a;
     border-radius: 40px 40px 4px 4px;
 }
 
-/* Subject hair — soft bangs */
+/* Subject hair — lavender pink */
 
 .subject .head::before {
     content: "";
@@ -238,12 +271,12 @@ button {
     height: 14px;
     left: -2px;
     top: -4px;
-    background: #5a7a9a;
-    border: 2px solid #2a2a3a;
+    background: #c8a2d4;
+    border: 2px solid #8b3a5a;
     border-radius: 38px 38px 0 0;
 }
 
-/* Big cute eyes with sparkles */
+/* Big cute eyes with pink sparkles */
 
 .head::after {
     content: "";
@@ -252,26 +285,26 @@ button {
     top: 30px;
     width: 12px;
     height: 14px;
-    background: #2a2a3a;
+    background: #8b3a5a;
     border-radius: 50%;
     box-shadow:
-        28px 0 #2a2a3a,
-        3px 3px 0 1px #fff,
-        31px 3px 0 1px #fff;
+        28px 0 #8b3a5a,
+        3px 3px 0 1px #ffb7c5,
+        31px 3px 0 1px #ffb7c5;
 }
 
 /* Blush cheeks */
 
 .blush {
     position: absolute;
-    width: 10px;
-    height: 6px;
-    background: rgba(255, 140, 140, .45);
+    width: 12px;
+    height: 7px;
+    background: rgba(255, 107, 157, .5);
     border-radius: 50%;
     top: 46px;
-    left: 13px;
+    left: 12px;
     z-index: 4;
-    box-shadow: 44px 0 rgba(255, 140, 140, .45);
+    box-shadow: 44px 0 rgba(255, 107, 157, .5);
 }
 
 /* Body — small chibi body */
@@ -282,8 +315,8 @@ button {
     left: 22px;
     width: 56px;
     height: 44px;
-    background: #e8e8e8;
-    border: 2px solid #2a2a3a;
+    background: #fff0f5;
+    border: 2px solid #8b3a5a;
     border-radius: 10px 10px 6px 6px;
     z-index: 2;
 }
@@ -291,13 +324,13 @@ button {
 /* Scientist lab coat */
 
 .scientist .body {
-    background: #dadde2;
+    background: #ffe0ec;
 }
 
 /* Subject clothing */
 
 .subject .body {
-    background: #3a3a4e;
+    background: #5a2a4a;
 }
 
 /* Arms — short stubby */
@@ -307,8 +340,8 @@ button {
     top: 70px;
     width: 14px;
     height: 32px;
-    background: #f5cda8;
-    border: 2px solid #2a2a3a;
+    background: #fce0ce;
+    border: 2px solid #8b3a5a;
     border-radius: 7px;
     z-index: 1;
 }
@@ -328,8 +361,8 @@ button {
     top: 106px;
     width: 18px;
     height: 30px;
-    background: #2a2a3a;
-    border: 2px solid #1a1a2a;
+    background: #4a1a3a;
+    border: 2px solid #6b2a4a;
     border-radius: 6px 6px 4px 4px;
     z-index: 1;
 }
@@ -348,26 +381,28 @@ button {
 
 .dialogueBox {
     min-height: 135px;
-    background: #0c0c13;
-    border-top: 3px solid #383846;
+    background: #1e0a1c;
+    border-top: 2px solid #d4a574;
     padding: 18px 22px;
+    box-shadow: inset 0 4px 12px rgba(255, 107, 157, .08);
 }
 
 .speaker {
-    color: #c28ab7;
+    color: #ff6b9d;
     font-weight: bold;
     margin-bottom: 8px;
+    text-shadow: 0 0 8px rgba(255, 107, 157, .5);
 }
 
 .dialogueText {
     line-height: 1.6;
-    color: #dddde5;
+    color: #f5d0dc;
     min-height: 50px;
 }
 
 .continue {
     margin-top: 12px;
-    color: #777787;
+    color: #d4a0b0;
     font-size: 12px;
 }
 
@@ -386,16 +421,20 @@ button {
     flex: 1;
     min-width: 200px;
     padding: 12px;
-    background: #151520;
-    color: #ddd;
-    border: 1px solid #444452;
+    background: #2a1020;
+    color: #f5d0dc;
+    border: 1px solid #d4a574;
     cursor: pointer;
     text-align: left;
+    border-radius: 4px;
+    transition: all .3s;
 }
 
 .choice:hover {
-    background: #252532;
-    border-color: #888;
+    background: #3d1a30;
+    border-color: #ff6b9d;
+    box-shadow: 0 0 15px rgba(255, 107, 157, .3);
+    color: #fff0f5;
 }
 
 /* =====================================================
@@ -406,7 +445,7 @@ button {
     position: absolute;
     top: 15px;
     right: 15px;
-    color: #555565;
+    color: #a06080;
     font-size: 11px;
 }
 
@@ -454,6 +493,15 @@ button {
 <div id="game">
 
     <div class="screen">
+
+        <!-- Floating hearts -->
+
+        <div class="heart-particle">♥</div>
+        <div class="heart-particle">♥</div>
+        <div class="heart-particle">♥</div>
+        <div class="heart-particle">♥</div>
+        <div class="heart-particle">♥</div>
+        <div class="heart-particle">♥</div>
 
         <!-- TITLE -->
 
