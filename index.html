@@ -212,12 +212,14 @@ button {
     width: 100px;
     height: 180px;
     bottom: 65px;
-    animation: bob 2.5s ease-in-out infinite;
+    animation: idleBreathe 4s ease-in-out infinite;
 }
 
-@keyframes bob {
-    0%, 100% { bottom: 65px; }
-    50% { bottom: 70px; }
+@keyframes idleBreathe {
+    0%, 100% { bottom: 65px; margin-left: 0; }
+    25%      { bottom: 68px; margin-left: -2px; }
+    50%      { bottom: 70px; margin-left: 0; }
+    75%      { bottom: 68px; margin-left: 2px; }
 }
 
 /* Scientist */
@@ -446,6 +448,41 @@ button {
 }
 
 /* =====================================================
+   SCREEN EFFECTS — 14DWY style
+   ===================================================== */
+
+.screen.shake {
+    animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translate(0); }
+    20%      { transform: translate(-4px, 2px); }
+    40%      { transform: translate(4px, -2px); }
+    60%      { transform: translate(-3px, 1px); }
+    80%      { transform: translate(3px, -1px); }
+}
+
+.dialogueBox.fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.dialogueText.typing::after {
+    content: "▌";
+    color: #ff6b9d;
+    animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* =====================================================
    DIALOGUE
    ===================================================== */
 
@@ -663,7 +700,7 @@ button {
             </div>
 
 
-            <div class="dialogueBox">
+            <div class="dialogueBox" id="dialogueBox">
 
                 <div class="speaker" id="speaker">
                     SYSTEM
@@ -923,6 +960,69 @@ function startGame() {
 
 
 /* =====================================================
+   TYPEWRITER + SCENE TRANSITIONS
+   ===================================================== */
+
+let typeTimer = null;
+let afterTypeCallback = null;
+
+function typewriter(el, text, callback) {
+
+    if (typeTimer) clearInterval(typeTimer);
+
+    el.textContent = "";
+    el.classList.add("typing");
+
+    let i = 0;
+
+    typeTimer = setInterval(() => {
+
+        if (i < text.length) {
+
+            el.textContent += text[i];
+            i++;
+
+        } else {
+
+            clearInterval(typeTimer);
+            typeTimer = null;
+            el.classList.remove("typing");
+
+            if (callback) callback();
+
+        }
+
+    }, 35);
+
+}
+
+function skipTypewriter() {
+
+    if (typeTimer) {
+
+        clearInterval(typeTimer);
+        typeTimer = null;
+
+        const scene = story[currentScene];
+        const dialogue = document.getElementById("dialogue");
+
+        dialogue.textContent = scene.text;
+        dialogue.classList.remove("typing");
+
+        if (afterTypeCallback) {
+            const cb = afterTypeCallback;
+            afterTypeCallback = null;
+            cb();
+        }
+
+        return true;
+    }
+
+    return false;
+}
+
+
+/* =====================================================
    SHOW SCENE
    ===================================================== */
 
@@ -951,60 +1051,85 @@ function showScene(sceneName) {
     const continueText =
         document.getElementById("continue");
 
-    speaker.textContent = scene.speaker;
+    const dialogueBox =
+        document.getElementById("dialogueBox");
 
-    dialogue.textContent = scene.text;
+    speaker.textContent = scene.speaker;
 
     choices.innerHTML = "";
 
     continueText.style.display = "none";
 
+    /* Fade transition */
 
-    /* Choices */
+    dialogueBox.classList.remove("fade-in");
+    void dialogueBox.offsetWidth;
+    dialogueBox.classList.add("fade-in");
 
-    if (scene.choices) {
+    /* Screen shake for dramatic scenes */
 
-        scene.choices.forEach(choice => {
+    const shakeScenes = ["experiment", "procedure", "wake", "final"];
 
-            const button =
-                document.createElement("button");
+    if (shakeScenes.includes(sceneName)) {
 
-            button.className = "choice";
+        const screen = document.querySelector(".screen");
 
-            button.textContent = choice.text;
+        screen.classList.remove("shake");
+        void screen.offsetWidth;
+        screen.classList.add("shake");
+    }
 
-            button.onclick = () => {
+    /* Click dialogue box to skip typewriter */
 
-                showScene(choice.next);
+    dialogueBox.onclick = function () {
+        skipTypewriter();
+    };
+
+    /* Show choices / continue after text finishes */
+
+    afterTypeCallback = function () {
+
+        if (scene.choices) {
+
+            scene.choices.forEach(choice => {
+
+                const button =
+                    document.createElement("button");
+
+                button.className = "choice";
+
+                button.textContent = choice.text;
+
+                button.onclick = () => {
+
+                    showScene(choice.next);
+
+                };
+
+                choices.appendChild(button);
+
+            });
+
+        } else if (scene.next) {
+
+            continueText.style.display = "block";
+
+            continueText.textContent =
+                "CLICK TO CONTINUE";
+
+            continueText.onclick = () => {
+
+                showScene(scene.next);
 
             };
 
-            choices.appendChild(button);
+            continueText.style.cursor = "pointer";
 
-        });
+        }
 
-    }
+    };
 
-    /* Normal continuation */
-
-    else if (scene.next) {
-
-        continueText.style.display = "block";
-
-        continueText.textContent =
-            "CLICK TO CONTINUE";
-
-        document.getElementById("dialogueBox");
-
-        continueText.onclick = () => {
-
-            showScene(scene.next);
-
-        };
-
-        continueText.style.cursor = "pointer";
-
-    }
+    typewriter(dialogue, scene.text, afterTypeCallback);
 
 }
 
@@ -1016,6 +1141,8 @@ function showScene(sceneName) {
 document.addEventListener("keydown", function(event) {
 
     if (event.key === "Enter") {
+
+        if (skipTypewriter()) return;
 
         const scene = story[currentScene];
 
