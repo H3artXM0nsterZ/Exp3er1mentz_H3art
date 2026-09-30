@@ -248,18 +248,52 @@ button {
     z-index: 3;
 }
 
-/* Scientist hair — pink yandere */
+/* Scientist hair — white pixie cut */
 
 .scientist .head::before {
     content: "";
     position: absolute;
-    width: 80px;
-    height: 26px;
-    left: -2px;
-    top: -8px;
-    background: #ff6b9d;
+    width: 82px;
+    height: 30px;
+    left: -3px;
+    top: -10px;
+    background: #e8e8f0;
     border: 2px solid #8b3a5a;
-    border-radius: 40px 40px 4px 4px;
+    border-radius: 41px 41px 4px 4px;
+}
+
+/* Scientist side bangs */
+
+.scientist .bangs {
+    position: absolute;
+    top: 6px;
+    left: 4px;
+    width: 10px;
+    height: 44px;
+    background: #e8e8f0;
+    border: 2px solid #8b3a5a;
+    border-radius: 5px;
+    z-index: 3;
+    box-shadow:
+        74px 0 0 2px #8b3a5a,
+        74px 0 #e8e8f0;
+}
+
+/* Scientist eyes — dark blue */
+
+.scientist .head::after {
+    content: "";
+    position: absolute;
+    left: 18px;
+    top: 30px;
+    width: 12px;
+    height: 14px;
+    background: #1a3a6a;
+    border-radius: 50%;
+    box-shadow:
+        28px 0 #1a3a6a,
+        3px 3px 0 1px #aaccff,
+        31px 3px 0 1px #aaccff;
 }
 
 /* Subject hair — lavender pink */
@@ -321,10 +355,46 @@ button {
     z-index: 2;
 }
 
-/* Scientist lab coat */
+/* Scientist lab coat — white with collar */
 
 .scientist .body {
-    background: #ffe0ec;
+    background: #f0f0f5;
+}
+
+.scientist .body::before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 14px;
+    background: #e0e0e8;
+    border: 2px solid #8b3a5a;
+    border-radius: 0 0 6px 6px;
+    z-index: 3;
+}
+
+.scientist .body::after {
+    content: "";
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 26px;
+    background: #8b3a5a;
+}
+
+/* Scientist sleeves and pants */
+
+.scientist .arm {
+    background: #f0f0f5;
+}
+
+.scientist .leg {
+    background: #2a2a4a;
+    border-color: #1a1a3a;
 }
 
 /* Subject clothing */
@@ -559,6 +629,7 @@ button {
                 <div class="character scientist">
 
                     <div class="head"></div>
+                    <div class="bangs"></div>
                     <div class="blush"></div>
 
                     <div class="body"></div>
